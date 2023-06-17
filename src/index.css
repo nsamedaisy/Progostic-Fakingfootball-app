@@ -11,3 +11,28 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.choosen-team {
+  display: flex;
+  justify-content: space-around;
+}
+
+.league-logo {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 60px;
+  border: 3px solid black;
+  border-radius: 50%;
+}
+
+.league-name {
+  font-family: sans-serif;
+  font-size: 24px;
+}

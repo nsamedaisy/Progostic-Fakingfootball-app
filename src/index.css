@@ -1,8 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -12,10 +11,57 @@ code {
     monospace;
 }
 
+.choosen-team {
+  width: 80vw;
+  margin: auto;
+  box-shadow: 1px 6px 5px 2px #0000009b;
+  margin-top: 15vh;
+  padding: 50px;
+}
+
+.heading-1 {
+  font-family: 'Lobster', cursive;
+  font-size: 60px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+span {
+  font-family: 'Lobster', cursive;
+  color: red;
+}
+
+label {
+  font-size: 40px;
+  font-family: 'Lobster', cursive;
+  padding: 40px;
+}
+
 .row {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  /* margin-top: 50px; */
+}
+
+.select {
+  line-height: 2;
+
+}
+
+.flags {
+  width: 80px;
+  height: 80px;
+  padding-right: 20px;
+}
+
+.flex-list {
+  display: flex;
+  border-bottom: 1px solid #00000021;
+  padding: 35px 0 4px 0;
+  flex-direction: row;
+  width: 30vw;
 }
 
 .choosen-team {
@@ -23,16 +69,32 @@ code {
   justify-content: space-around;
 }
 
+.head1 {
+  font-size: 44px;
+  font-family: 'Lobster', cursive;
+
+}
+
 .league-logo {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   padding: 60px;
-  border: 3px solid black;
+  border: 1px solid black;
   border-radius: 50%;
 }
 
 .league-name {
-  font-family: sans-serif;
-  font-size: 24px;
+  font-family: serif;
+  font-size: 26px;
+}
+
+.results {
+  border: 2px solid #070707c2;
+  width: 20vw;
+  height: 4vh;
+  margin-top: 15vh;
+  text-align: center;
+  padding-top: 6px;
+  font-size: 22px;
 }

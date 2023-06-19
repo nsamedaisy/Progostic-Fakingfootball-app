@@ -1,13 +1,33 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, createRef } from "react";
 import { MyContext } from "../MyContext";
 import { useNavigate } from "react-router-dom";
-import { useScreenshoot } from "use-react-screenshoot";
+import { createFileName, useScreenshot } from "use-react-screenshot";
 
 export const TeamScore = () => {
   const myContext = useContext(MyContext);
   const [choice, setChoice] = useState({});
   const navigate = useNavigate();
   console.log(myContext);
+
+  const ref = createRef(null);
+  const [image, takeScreenshot] = useScreenshot({
+    type: "image/jpg",
+    quality: 1.0,
+  });
+
+  const download = (
+    image,
+    { name = "footballimage", extension = "jpg" } = {}
+  ) => {
+    const a = document.createAttribute("a");
+    a.href = image;
+    a.download = createFileName(extension, name);
+    a.click();
+  };
+
+  const downloadScreenShot = () => {
+    takeScreenshot(ref.current).then(download);
+  };
 
   // json.strings saves data to a local storage (data is converted to a json string and back to an object when retrieving)
   // json.parse retrieves data from the local storage
@@ -52,7 +72,7 @@ export const TeamScore = () => {
   return (
     <div>
       <img src="" alt="footballlogo" className="football-logo" />
-      <div className="choosen-team">
+      <div className="choosen-team" ref={ref}>
         <div onClick={selectHome}>
           <h1 className="head1">
             <span>H</span>ome
@@ -89,7 +109,9 @@ export const TeamScore = () => {
         </div>
       </div>
 
-      <button className="capture">Capture</button>
+      <button className="capture" onClick={downloadScreenShot}>
+        Capture
+      </button>
     </div>
   );
 };

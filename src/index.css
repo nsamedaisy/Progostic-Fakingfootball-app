@@ -15,7 +15,7 @@ code {
   width: 80vw;
   margin: auto;
   box-shadow: 1px 6px 5px 2px #0000009b;
-  margin-top: 15vh;
+  margin-top: 10vh;
   padding: 50px;
 }
 
@@ -30,6 +30,11 @@ code {
 span {
   font-family: 'Lobster', cursive;
   color: red;
+  font-size: 55px;
+}
+
+.vs {
+  padding: 30px;
 }
 
 label {
@@ -64,6 +69,10 @@ label {
   width: 30vw;
 }
 
+.football-logo {
+  background-image: url("./assets/footballlogo.png");
+}
+
 .choosen-team {
   display: flex;
   justify-content: space-around;
@@ -76,25 +85,41 @@ label {
 }
 
 .league-logo {
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding: 60px;
-  border: 1px solid black;
-  border-radius: 50%;
+  border: 1px solid #00000069;
+  width: 10vw;
+  height: 16vh;
 }
 
 .league-name {
   font-family: serif;
-  font-size: 26px;
+  font-size: 27px;
+  /* width: 25vw; */
 }
 
 .results {
-  border: 2px solid #070707c2;
+  /* border: 2px solid #07070748; */
   width: 20vw;
   height: 4vh;
   margin-top: 15vh;
   text-align: center;
   padding-top: 6px;
-  font-size: 22px;
+  font-size: 26px;
+}
+
+.capture {
+  text-align: center;
+  justify-content: center;
+  width: 13vw;
+  height: 5vh;
+  margin: 15% 42% 5%;
+  font-size: 20px;
+  font-weight: 700;
+  border-radius: 15px;
+}
+
+.capture:focus {
+  outline-color: transparent;
+  outline-style:solid;
+  box-shadow: 0 0 0 4px red;
+  transition: 0.7s;
 }

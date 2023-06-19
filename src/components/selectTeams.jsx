@@ -1,9 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { MyContext } from "../MyContext";
 
 export const SelectTeams = () => {
   const [clubTeam, setClubTeam] = useState([]);
   const [countryTeam, setCountryTeam] = useState([]);
+  const navigate = useNavigate();
 
   const myContext = useContext(MyContext);
   const teams = myContext.data;
@@ -13,6 +15,24 @@ export const SelectTeams = () => {
     setClubTeam(teams?.clubs);
     setCountryTeam(teams?.countries);
   }, [teams]);
+
+  // This function called selectTeams takes a club parameter. It retrieves the object stored in the browser's sessionStorage and parses it as JSON into a variable called select.
+
+  const selectTeams = (club) => {
+    const select = JSON.parse(sessionStorage.getItem("select"));
+
+    if (select.choice === "home") {
+      select.teams.home = club;
+      sessionStorage.setItem("select", JSON.stringify(select));
+    }
+
+    if (select.choice === "away") {
+      select.teams.away = club;
+      sessionStorage.setItem("select", JSON.stringify(select));
+    }
+
+    navigate("/");
+  };
 
   return (
     <div className="board">
@@ -27,7 +47,11 @@ export const SelectTeams = () => {
             <div className="select">
               {clubTeam?.map((club, i) => {
                 return (
-                  <div key={club.name + i} className="flex-list">
+                  <div
+                    key={club.name + i}
+                    onClick={() => selectTeams(club)}
+                    className="flex-list"
+                  >
                     <img src={club.url} alt="logo" className="flags" />
                     <h3>{club.name}</h3>
                   </div>
@@ -41,7 +65,11 @@ export const SelectTeams = () => {
             <div className="select">
               {countryTeam?.map((country, i) => {
                 return (
-                  <div key={country.name + i} className="flex-list">
+                  <div
+                    key={country.name + i}
+                    onClick={() => selectTeams(country)}
+                    className="flex-list"
+                  >
                     <img src={country.flag} alt="flags" className="flags" />
                     <h3>{country.country}</h3>
                   </div>

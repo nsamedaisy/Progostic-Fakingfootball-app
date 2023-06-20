@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import { MyContext } from "./MyContext";
 import { Routes, Route } from "react-router-dom";
-import { TeamScore } from "./components/teamScore";
+import { TeamScore } from "./components/TeamScore";
 import { SelectTeams } from "./components/selectTeams";
 
 function App() {

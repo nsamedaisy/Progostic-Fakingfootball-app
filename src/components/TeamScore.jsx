@@ -1,7 +1,8 @@
-import React, { useContext, useEffect, useState, createRef } from "react";
+import React, { useContext, useEffect, useState, useRef } from "react";
 import { MyContext } from "../MyContext";
 import { useNavigate } from "react-router-dom";
 import { createFileName, useScreenshot } from "use-react-screenshot";
+import EditableElement from "./editableElement";
 
 export const TeamScore = () => {
   const myContext = useContext(MyContext);
@@ -9,7 +10,7 @@ export const TeamScore = () => {
   const navigate = useNavigate();
   console.log(myContext);
 
-  const ref = createRef(null);
+  const imageRef = useRef(null);
   const [image, takeScreenshot] = useScreenshot({
     type: "image/jpg",
     quality: 1.0,
@@ -19,15 +20,15 @@ export const TeamScore = () => {
     image,
     { name = "footballimage", extension = "jpg" } = {}
   ) => {
-    const a = document.createAttribute("a");
+    const a = document.createElement("a");
     a.href = image;
     a.download = createFileName(extension, name);
     a.click();
   };
 
-  const downloadScreenShot = () => {
-    takeScreenshot(ref.current).then(download);
-  };
+  async function downloadScreenShot() {
+    let imageData = await takeScreenshot(imageRef.current).then(download);
+  }
 
   // json.strings saves data to a local storage (data is converted to a json string and back to an object when retrieving)
   // json.parse retrieves data from the local storage
@@ -72,7 +73,7 @@ export const TeamScore = () => {
   return (
     <div>
       <img src="" alt="footballlogo" className="football-logo" />
-      <div className="choosen-team" ref={ref}>
+      <div className="choosen-team" ref={imageRef}>
         <div onClick={selectHome}>
           <h1 className="head1">
             <span>H</span>ome
@@ -81,17 +82,21 @@ export const TeamScore = () => {
             src={choice?.teams?.home?.url || choice?.teams?.home?.flag}
             alt="flag"
             className="league-logo"
+            ref={imageRef}
           />
           <h2 className="league-name">
             {choice?.teams?.home?.name || choice?.teams?.home?.country}
           </h2>
         </div>
 
-        <div>
-          <p className="results">
-            {" "}
-            3 <span className="vs">vs</span> 2{" "}
-          </p>
+        <div className="editable">
+          <EditableElement>
+            <input className="results" placeholder="00" type="number" />
+          </EditableElement>
+          <span className="vs">vs</span>
+          <EditableElement>
+            <input className="results" placeholder="00" type="number" />
+          </EditableElement>{" "}
         </div>
 
         <div onClick={selectAway}>
@@ -102,6 +107,7 @@ export const TeamScore = () => {
             src={choice?.teams?.away?.url || choice?.teams?.away?.flag}
             alt="flag"
             className="league-logo"
+            ref={imageRef}
           />
           <h2 className="league-name">
             {choice?.teams?.away?.name || choice?.teams?.away?.country}

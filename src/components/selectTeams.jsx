@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { MyContext } from "../MyContext";
+import { SearchBar } from "../components/SearchBar";
 
 export const SelectTeams = () => {
   const [clubTeam, setClubTeam] = useState([]);
@@ -34,6 +35,25 @@ export const SelectTeams = () => {
     navigate("/");
   };
 
+  // const [searchInput, setSearchInput] = useState("");
+
+  // const handleChange = (e) => {
+  //   e.preventDefault();
+  //   setSearchInput(e.target.value);
+  // };
+
+  // if (searchInput.length > 0) {
+  //   teams.countries.filter((country) => {
+  //     return country.country.match(searchInput);
+  //   });
+  // }
+
+  // if (searchInput.length > 0) {
+  //   teams.clubs.filter((country) => {
+  //     return country.name.match(searchInput);
+  //   });
+  // }
+
   return (
     <div className="board">
       <div>
@@ -44,6 +64,14 @@ export const SelectTeams = () => {
         <div className="row">
           <div>
             <label>Clubs</label>
+
+            {/* <input
+              type="search"
+              placeholder="Search here"
+              onChange={handleChange}
+              value={searchInput}
+            /> */}
+            {/* <SearchBar /> */}
             <div className="select">
               {clubTeam?.map((club, i) => {
                 return (
@@ -62,6 +90,7 @@ export const SelectTeams = () => {
 
           <div>
             <label>Countries</label>
+
             <div className="select">
               {countryTeam?.map((country, i) => {
                 return (

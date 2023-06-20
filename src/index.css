@@ -25,16 +25,14 @@ code {
 }
 
 .board {
-  width: 65vw;
+  width: 70vw;
   margin: auto;
 }
 
 .heading-1 {
   font-family: 'Lobster', cursive;
   font-size: 60px;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+  margin-left: 4vw;
 }
 
 span {
@@ -51,11 +49,11 @@ span {
 label {
   font-size: 40px;
   font-family: 'Lobster', cursive;
-  padding: 40px;
+  line-height: 3;
 }
 
 .country-label {
-  padding-left: 40px;
+  padding-left: 60px;
 }
 
 .search-input {
@@ -85,7 +83,7 @@ label {
 .flex-list {
   display: flex;
   border-bottom: 1px solid #0000000f;
-  padding: 35px 0 4px 0;
+  padding: 4px 0 4px 0;
   flex-direction: row;
   width: 25vw;
 }
@@ -133,14 +131,18 @@ label {
   width: 13vw;
   height: 5vh;
   margin: 13% 42% 5%;
+  border: none;
   font-size: 20px;
   font-weight: 700;
+  color: white;
   border-radius: 15px;
+  box-shadow: black 0px 30px 60px -12px inset, black 0px 18px 38px -18px inset;
 }
 
 .capture:focus {
   outline-color: transparent;
   outline-style:solid;
-  box-shadow: 0 0 0 4px red;
   transition: 0.7s;
+  color: black;
+  box-shadow: white 0px 30px 60px -12px inset, white 0px 18px 38px -18px inset;
 }

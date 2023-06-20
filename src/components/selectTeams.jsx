@@ -37,22 +37,12 @@ export const SelectTeams = () => {
 
   // const [searchInput, setSearchInput] = useState("");
 
-  // const handleChange = (e) => {
-  //   e.preventDefault();
-  //   setSearchInput(e.target.value);
-  // };
-
-  // if (searchInput.length > 0) {
-  //   teams.countries.filter((country) => {
-  //     return country.country.match(searchInput);
-  //   });
-  // }
-
-  // if (searchInput.length > 0) {
-  //   teams.clubs.filter((country) => {
-  //     return country.name.match(searchInput);
-  //   });
-  // }
+  // const searchTeams = teams.filter(
+  //   (team) =>
+  //     team.countries.country.toLocaleLowerCase().includes(searchInput) ||
+  //     team.clubs.name.toLocaleLowerCase(searchInput)
+  // );
+  // const teamsToDisplay = searchInput ? searchTeams : teams;
 
   return (
     <div className="board">
@@ -65,13 +55,6 @@ export const SelectTeams = () => {
           <div>
             <label>Clubs</label>
 
-            {/* <input
-              type="search"
-              placeholder="Search here"
-              onChange={handleChange}
-              value={searchInput}
-            /> */}
-            {/* <SearchBar /> */}
             <div className="select">
               {clubTeam?.map((club, i) => {
                 return (
@@ -88,7 +71,15 @@ export const SelectTeams = () => {
             </div>
           </div>
 
-          <div>
+          {/* <input
+            type="text"
+            id="search"
+            placeholder="Search here"
+            value={searchInput}
+            onChange={(e) => setSearchInput(e.target.value.toLocaleLowerCase())}
+          /> */}
+
+          <div className="country-label">
             <label>Countries</label>
 
             <div className="select">

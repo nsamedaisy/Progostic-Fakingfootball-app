@@ -1,16 +1,18 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { MyContext } from "../MyContext";
-import { SearchBar } from "../components/SearchBar";
+// import { MyContext } from "../MyContext";
+import data from "../data.json"
 
 export const SelectTeams = () => {
+  const [searchInput, setSearchInput] = useState("");
+  const [teams, setTeams] = useState(data);
   const [clubTeam, setClubTeam] = useState([]);
   const [countryTeam, setCountryTeam] = useState([]);
   const navigate = useNavigate();
 
-  const myContext = useContext(MyContext);
-  const teams = myContext.data;
-  console.log(myContext.data);
+  // const myContext = useContext(MyContext);
+  // const teams = myContext.data;
+  const [fetchedData, setFetchedData] = useState(teams);
 
   useEffect(() => {
     setClubTeam(teams?.clubs);
@@ -31,18 +33,20 @@ export const SelectTeams = () => {
       select.teams.away = club;
       sessionStorage.setItem("select", JSON.stringify(select));
     }
-
     navigate("/");
   };
 
-  // const [searchInput, setSearchInput] = useState("");
+  
 
-  // const searchTeams = teams.filter(
-  //   (team) =>
-  //     team.countries.country.toLocaleLowerCase().includes(searchInput) ||
-  //     team.clubs.name.toLocaleLowerCase(searchInput)
-  // );
-  // const teamsToDisplay = searchInput ? searchTeams : teams;
+  const handleFilter = (e) => {
+    const filterResult = teams.filter(
+      (data) =>
+        data.clubs.name.toLowerCase().includes(e.target.value.toLowerCase()) ||
+        data.countries.country.toLowerCase().includes(e.target.value.toLowerCase())
+    );
+    setFetchedData(filterResult);
+    setSearchInput(e.target.value);
+  };
 
   return (
     <div className="board">
@@ -71,13 +75,18 @@ export const SelectTeams = () => {
             </div>
           </div>
 
-          {/* <input
-            type="text"
+          <input
+            type="search"
             id="search"
             placeholder="Search here"
             value={searchInput}
-            onChange={(e) => setSearchInput(e.target.value.toLocaleLowerCase())}
-          /> */}
+            onInput={(e) => handleFilter(e)}
+          />
+          <button type="search" className="button-search">
+            search
+          </button>
+
+          {/* <SearchBar /> */}
 
           <div className="country-label">
             <label>Countries</label>

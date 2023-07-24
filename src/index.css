@@ -88,6 +88,16 @@ label {
   width: 25vw;
 }
 
+#search {
+  width: 150px;
+  height: 25px;
+}
+
+.button-search {
+  width: 55px;
+  height: 25px;
+}
+
 .football-logo {
   background-image: url("./assets/footballlogo.png");
 }

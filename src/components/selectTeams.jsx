@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 // import { MyContext } from "../MyContext";
-import data from "../data.json"
+import data from "../data.json";
 
 export const SelectTeams = () => {
-  const [searchInput, setSearchInput] = useState("");
+  // const [searchInput, setSearchInput] = useState("");
   const [teams, setTeams] = useState(data);
   const [clubTeam, setClubTeam] = useState([]);
   const [countryTeam, setCountryTeam] = useState([]);
   const navigate = useNavigate();
 
-  // const myContext = useContext(MyContext);
   // const teams = myContext.data;
-  const [fetchedData, setFetchedData] = useState(teams);
+  // const [fetchedData, setFetchedData] = useState(teams);
 
   useEffect(() => {
     setClubTeam(teams?.clubs);
@@ -36,17 +35,15 @@ export const SelectTeams = () => {
     navigate("/");
   };
 
-  
-
-  const handleFilter = (e) => {
-    const filterResult = teams.filter(
-      (data) =>
-        data.clubs.name.toLowerCase().includes(e.target.value.toLowerCase()) ||
-        data.countries.country.toLowerCase().includes(e.target.value.toLowerCase())
-    );
-    setFetchedData(filterResult);
-    setSearchInput(e.target.value);
-  };
+  // const handleFilter = (e) => {
+  //   const filterResult = teams.filter(
+  //     (data) =>
+  //       data.clubs.name.toLowerCase().includes(e.target.value.toLowerCase()) ||
+  //       data.countries.country.toLowerCase().includes(e.target.value.toLowerCase())
+  //   );
+  //   setFetchedData(filterResult);
+  //   setSearchInput(e.target.value);
+  // };
 
   return (
     <div className="board">
@@ -75,7 +72,7 @@ export const SelectTeams = () => {
             </div>
           </div>
 
-          <input
+          {/* <input
             type="search"
             id="search"
             placeholder="Search here"
@@ -84,7 +81,7 @@ export const SelectTeams = () => {
           />
           <button type="search" className="button-search">
             search
-          </button>
+          </button> */}
 
           {/* <SearchBar /> */}
 

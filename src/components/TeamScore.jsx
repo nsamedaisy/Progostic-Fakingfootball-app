@@ -3,7 +3,7 @@ import { MyContext } from "../MyContext";
 import { useNavigate } from "react-router-dom";
 import { createFileName, useScreenshot } from "use-react-screenshot";
 import EditableElement from "./editableElement";
-import html2canvas from "html2canvas";
+// import html2canvas from "html2canvas";
 
 export const TeamScore = () => {
   const myContext = useContext(MyContext);
@@ -13,33 +13,14 @@ export const TeamScore = () => {
 
   // screenshot implementation
 
-  // const imageRef = useRef(null);
-  // let element;
-  // const exportAsImage = async (el, footballimg) => {
-  //   const canvas = await html2canvas(imageRef.current);
-  //   const image = canvas.toDataURL("image/png", 1.0);
-
-  //   downloadImage(image, footballimg);
-  // };
-  // const downloadImage = (blob, fileName) => {
-  //   const fakeLink = window.document.createElement("a");
-  //   fakeLink.style = "display:none;";
-  //   fakeLink.download = fileName;
-
-  //   fakeLink.href = blob;
-
-  //   document.body.appendChild(fakeLink);
-  //   fakeLink.click();
-  //   document.body.removeChild(fakeLink);
-
-  //   fakeLink.remove();
-  // };
-
+  // const imageUrl = useRef(null);
   const imageRef = useRef(null);
   const [image, takeScreenshot] = useScreenshot({
     type: "image/jpg",
     quality: 1.0,
   });
+
+  const [screenshot, setScreenshot] = useScreenshot({});
 
   const download = (
     image,
@@ -51,9 +32,13 @@ export const TeamScore = () => {
     a.click();
   };
 
-  async function downloadScreenShot() {
-    let imageData = await takeScreenshot(imageRef.current).then(download);
-  }
+  const downloadScreenShot = () => {
+    takeScreenshot(imageRef.current).then(download);
+  };
+  // const Onload = () => {
+  //   useScreenshot(imageRef);
+  //   setScreenshot(screenshot);
+  // };
 
   // json.strings saves data to a local storage (data is converted to a json string and back to an object when retrieving)
   // json.parse retrieves data from the local storage
@@ -97,7 +82,13 @@ export const TeamScore = () => {
 
   return (
     <div>
-      <img src="" alt="footballlogo" className="football-logo" />
+      <img
+        // src={imageUrl}
+        // ref={imageRef}
+        // alt="footballlogo"
+        // className="football-logo"
+        // onLoad={Onload}
+      />
       <div className="choosen-team" ref={imageRef}>
         <div onClick={selectHome}>
           <h1 className="head1">

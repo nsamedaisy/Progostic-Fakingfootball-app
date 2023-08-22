@@ -58,9 +58,9 @@ label {
 
 .search-input {
   height: 4vh;
-  width: 18vw;
+  width: 16vw;
   text-align: center;
-  font-size: 17px;
+  font-size: 16px;
 }
 
 .row {
@@ -89,12 +89,12 @@ label {
 }
 
 #search {
-  width: 150px;
+  width: 140px;
   height: 25px;
 }
 
 .button-search {
-  width: 55px;
+  width: 50px;
   height: 25px;
 }
 

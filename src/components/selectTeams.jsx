@@ -18,7 +18,6 @@ export const SelectTeams = () => {
     setCountryTeam(teams?.countries);
   }, [teams]);
 
-  // This function called selectTeams takes a club parameter. It retrieves the object stored in the browser's sessionStorage and parses it as JSON into a variable called select.
 
   const selectTeams = (club) => {
     const select = JSON.parse(sessionStorage.getItem("select"));

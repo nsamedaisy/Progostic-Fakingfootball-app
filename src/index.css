@@ -1,8 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -10,4 +9,153 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.teamscoreText {
+  font-size: 22px;
+  text-align: center;
+  color: #020265;
+}
+
+.choosen-team {
+  width: 90%;
+  margin: auto;
+  box-shadow: #32325d40 0px 50px 100px -20px, #0000004d 0px 30px 60px -30px, #0a254059 0px -2px 6px 0px inset;
+  margin-top: 6vh;
+  border-radius: 30px;
+  color: #0000a2;
+  padding: 50px;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  align-items: center;
+}
+
+.board {
+  width: 70vw;
+  margin: auto;
+}
+
+.heading-1 {
+  font-family: 'Lobster', cursive;
+  font-size: 60px;
+  margin-left: 4vw;
+}
+
+span {
+  font-family: 'Lobster', cursive;
+  color: red;
+  font-size: 65px;
+}
+
+.vs {
+  padding: 45px;
+  font-size: 40px;
+}
+
+label {
+  font-size: 40px;
+  font-family: 'Lobster', cursive;
+  line-height: 3;
+}
+
+.country-label {
+  padding-left: 60px;
+}
+
+.search-input {
+  height: 4vh;
+  width: 16vw;
+  text-align: center;
+  font-size: 16px;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  /* margin-top: 50px; */
+}
+
+.select {
+  line-height: 2;
+}
+
+.flags {
+  width: 80px;
+  height: 80px;
+  padding-right: 20px;
+}
+
+.flex-list {
+  display: flex;
+  border-bottom: 1px solid #0000000f;
+  padding: 4px 0 4px 0;
+  flex-direction: row;
+  width: 25vw;
+}
+
+#search {
+  width: 140px;
+  height: 25px;
+}
+
+.button-search {
+  width: 50px;
+  height: 25px;
+}
+
+.head1 {
+  font-size: 44px;
+  font-family: 'Lobster', cursive;
+}
+
+.league-logo {
+  border: 1px solid #00000069;
+  border-radius: 50%;
+  width: 10vw;
+  height: 20vh;
+}
+
+.league-name {
+  font-family: serif;
+  font-size: 27px;
+  /* width: 25vw; */
+}
+
+.results {
+  border: 1px solid #07070748;
+  width: 3vw;
+  height: 3vh;
+  text-align: center;
+  padding: 6px;
+  font-size: 24px;
+}
+
+.editable {
+  display: flex;
+  align-items: center;
+}
+
+.capture {
+  text-align: center;
+  justify-content: center;
+  width: 300px;
+  padding: 12px 25px;
+  cursor: pointer;
+  margin: 10% 42% 5%;
+  border: none;
+  font-size: 22px;
+  font-weight: 700;
+  color: white;
+  border-radius: 15px;
+  box-shadow: black 0px 30px 60px -12px inset, black 0px 18px 38px -18px inset;
+}
+
+.capture:focus {
+  outline-color: transparent;
+  outline-style:solid;
+  transition: 0.7s;
+  color: black;
+  box-shadow: white 0px 30px 60px -12px inset, white 0px 18px 38px -18px inset;
 }

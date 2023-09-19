@@ -83,6 +83,10 @@ export const TeamScore = () => {
 
   return (
     <div>
+      <h2 className="teamscoreText">
+        On your board you have Home and Away click on it and select the teams
+        you want it can be Clubs or Countries
+      </h2>
       <div className="choosen-team" ref={imageRef}>
         <div onClick={selectHome}>
           <h1 className="head1">

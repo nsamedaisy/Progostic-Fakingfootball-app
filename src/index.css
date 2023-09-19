@@ -11,8 +11,14 @@ code {
     monospace;
 }
 
+.teamscoreText {
+  font-size: 22px;
+  text-align: center;
+  color: #020265;
+}
+
 .choosen-team {
-  width: 85%;
+  width: 90%;
   margin: auto;
   box-shadow: #32325d40 0px 50px 100px -20px, #0000004d 0px 30px 60px -30px, #0a254059 0px -2px 6px 0px inset;
   margin-top: 6vh;

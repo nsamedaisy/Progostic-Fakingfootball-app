@@ -12,11 +12,12 @@ code {
 }
 
 .choosen-team {
-  width: 70vw;
+  width: 85%;
   margin: auto;
   box-shadow: #32325d40 0px 50px 100px -20px, #0000004d 0px 30px 60px -30px, #0a254059 0px -2px 6px 0px inset;
   margin-top: 6vh;
   border-radius: 30px;
+  color: #0000a2;
   padding: 50px;
   display: flex;
   justify-content: space-around;
@@ -98,11 +99,6 @@ label {
   height: 25px;
 }
 
-.football-logo {
-  background-image: url("./assets/footballlogo.png");
-}
-
-
 .head1 {
   font-size: 44px;
   font-family: 'Lobster', cursive;
@@ -138,11 +134,12 @@ label {
 .capture {
   text-align: center;
   justify-content: center;
-  width: 13vw;
-  height: 5vh;
-  margin: 13% 42% 5%;
+  width: 300px;
+  padding: 12px 25px;
+  cursor: pointer;
+  margin: 10% 42% 5%;
   border: none;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 700;
   color: white;
   border-radius: 15px;

@@ -1,9 +1,8 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import { MyContext } from "../MyContext";
 import { useNavigate } from "react-router-dom";
-import { createFileName, useScreenshot } from "use-react-screenshot";
 import EditableElement from "./editableElement";
-// import html2canvas from "html2canvas";
+import domtoimage from "dom-to-image";
 
 export const TeamScore = () => {
   const myContext = useContext(MyContext);
@@ -13,14 +12,15 @@ export const TeamScore = () => {
 
   // screenshot implementation
 
-  // const imageUrl = useRef(null);
-  const imageRef = useRef(null);
-  const [image, takeScreenshot] = useScreenshot({
-    type: "image/jpg",
-    quality: 1.0,
-  });
+  const createFileName = (extension, name) => {
+    const date = new Date();
+    const timestamp = `${date.getFullYear()}${
+      date.getMonth() + 1
+    }${date.getDate()}_${date.getHours()}${date.getMinutes()}${date.getSeconds()}`;
+    return `${name}_${timestamp}.${extension}`;
+  };
 
-  const [screenshot, setScreenshot] = useScreenshot({});
+  const imageRef = useRef(null);
 
   const download = (
     image,
@@ -32,16 +32,17 @@ export const TeamScore = () => {
     a.click();
   };
 
-  const downloadScreenShot = () => {
-    takeScreenshot(imageRef.current).then(download);
+  const downloadScreenShot = (event) => {
+    console.log("Clicked capture button");
+    event.preventDefault();
+    event.stopPropagation();
+    const node = imageRef.current;
+    setTimeout(() => {
+      domtoimage.toJpeg(node).then(function (dataUrl) {
+        download(dataUrl, { name: "team_score", extension: "jpg" });
+      });
+    }, 1000);
   };
-  // const Onload = () => {
-  //   useScreenshot(imageRef);
-  //   setScreenshot(screenshot);
-  // };
-
-  // json.strings saves data to a local storage (data is converted to a json string and back to an object when retrieving)
-  // json.parse retrieves data from the local storage
 
   const selectHome = () => {
     const newPlay = JSON.parse(sessionStorage.getItem("select"));
@@ -83,11 +84,9 @@ export const TeamScore = () => {
   return (
     <div>
       <img
-        // src={imageUrl}
-        // ref={imageRef}
-        // alt="footballlogo"
-        // className="football-logo"
-        // onLoad={Onload}
+      src={imageRef}
+      alt="footballlogo"
+      className="football-logo"
       />
       <div className="choosen-team" ref={imageRef}>
         <div onClick={selectHome}>
@@ -98,14 +97,13 @@ export const TeamScore = () => {
             src={choice?.teams?.home?.url || choice?.teams?.home?.flag}
             alt="flag"
             className="league-logo"
-            ref={imageRef}
           />
           <h2 className="league-name">
             {choice?.teams?.home?.name || choice?.teams?.home?.country}
           </h2>
         </div>
 
-        <div className="editable" ref={imageRef}>
+        <div className="editable">
           <EditableElement>
             <input className="results" placeholder="00" type="number" />
           </EditableElement>
@@ -123,7 +121,6 @@ export const TeamScore = () => {
             src={choice?.teams?.away?.url || choice?.teams?.away?.flag}
             alt="flag"
             className="league-logo"
-            ref={imageRef}
           />
           <h2 className="league-name">
             {choice?.teams?.away?.name || choice?.teams?.away?.country}

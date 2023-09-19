@@ -84,9 +84,9 @@ export const TeamScore = () => {
   return (
     <div>
       <img
-      src={imageRef}
-      alt="footballlogo"
-      className="football-logo"
+        src="https://example.com/footballlogo.jpg"
+        alt="footballlogo"
+        className="football-logo"
       />
       <div className="choosen-team" ref={imageRef}>
         <div onClick={selectHome}>
